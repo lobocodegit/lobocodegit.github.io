@@ -487,3 +487,7 @@ select, button{
         }
     }
 }
+
+input[type="checkbox"] {
+accent-color: #AC7222;
+}
