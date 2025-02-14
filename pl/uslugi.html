@@ -635,23 +635,23 @@
     <!-- Main Activation JS -->
     <script src="../assets/js/main.js"></script>
 
-     <script>
-            $("#contact-form").on('submit',function(event) {
-                event.preventDefault(); // to prevent default page reloading
-                var dataString = $(this).serialize(); // to get the form data
+        <script>
+            $('#contact-form').on('submit', function (event) {
+                event.preventDefault() // to prevent default page reloading
+                var dataString = $(this).serialize() // to get the form data
                 $.ajax({
-                    type: "POST",
-                    url: "form.php",
+                    type: 'POST',
+                    url: 'https://formspree.io/f/xeoelzpk',
                     data: dataString,
-                    success: function(data){
-                        $('#contact-form')[0].reset(); // to reset form data
-                    }
-                }).done(function(data){
+                    success: function (data) {
+                        $('#contact-form')[0].reset() // to reset form data
+                    },
+                }).done(function (data) {
                     setTimeout(function () {
-                        $('.contactform_message').addClass('active');
-                    }, 500);
-                });
-            });
+                        $('.contactform_message').addClass('active')
+                    }, 500)
+                })
+            })
         </script>
 
 <!--Start of Tawk.to Script-->
