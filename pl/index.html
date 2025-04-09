@@ -833,7 +833,7 @@
                                       <label for="zgoda" style="margin-top: -0.5rem; margin-left: 0.5rem;">Jeśli został podany numer telefonu: Zgadzam się na kontakt telefoniczny w celu przedstawienia oferty przez Inigra Sp. z o.o.</label>
                                     </div>
                                     <div class="col-12 text-center mb-4">
-                                        <button class="btn btn-primary btn-hover-secondary">Uzyskaj bezpłatną konsultację</button>
+                                        <button  type="submit" class="btn btn-primary btn-hover-secondary">Uzyskaj bezpłatną konsultację</button>
                                     </div>
                                 </div>
                             </form>
@@ -1015,27 +1015,34 @@
     <!-- Main Activation JS -->
     <script src="../assets/js/main.js"></script>
 
-        <script>
-            $('#contact-form').on('submit', function (event) {
-                event.preventDefault() // to prevent default page reloading
-                var dataString = $(this).serialize() // to get the form data
-                $.ajax({
-                    type: 'POST',
-                    url: 'https://formspree.io/f/xeoelzpk',
-                    data: dataString,
-		    headers: {
-                	'Accept': 'application/json'
-            	    },
-                    success: function (data) {
-                        $('#contact-form')[0].reset() // to reset form data
-                    },
-                }).done(function (data) {
-                    setTimeout(function () {
-                        $('.contactform_message').addClass('active')
-                    }, 500)
-                })
-            })
-        </script>
+<script>
+  $('#contact-form').on('submit', function (event) {
+    event.preventDefault();
+
+    const form = document.getElementById('contact-form');
+    const formData = new FormData(form);
+
+    $.ajax({
+      type: 'POST',
+      url: 'https://formspree.io/f/xeoelzpk',
+      data: formData,
+      processData: false,
+      contentType: false,
+      headers: {
+        'Accept': 'application/json'
+      },
+      success: function () {
+        $('#contact-form')[0].reset();
+        $('.contactform_message').addClass('active');
+      },
+      error: function (xhr, status, error) {
+        console.error('Form error:', status, error);
+        alert('Błąd podczas wysyłania formularza. Spróbuj ponownie.');
+      }
+    });
+  });
+</script>
+
 <script>
 
 
