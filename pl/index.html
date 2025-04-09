@@ -1023,6 +1023,9 @@
                     type: 'POST',
                     url: 'https://formspree.io/f/xeoelzpk',
                     data: dataString,
+		    headers: {
+                	'Accept': 'application/json'
+            	    },
                     success: function (data) {
                         $('#contact-form')[0].reset() // to reset form data
                     },
